@@ -1,0 +1,70 @@
+img
+{
+    width:100%;
+}
+
+header
+{
+    padding : 1.2em;
+}
+
+nav a
+{
+    font-size: 120%;
+    color : #900;
+    text-decoration: none;
+}
+
+nav a:hover
+{
+    color : darkblue;
+    text-decoration: none;
+}
+
+footer
+{
+    text-align: center;
+    
+}
+#ajouter{
+    margin-top: 10px;
+    display:block;
+
+
+text-align:center;
+vertical-align:middle;
+
+}
+
+/*******************************************************************/
+
+.darkblue
+{
+    background: darkblue;
+}
+
+.lightblue
+{
+    background: lightblue;
+}
+
+.red
+{
+    color: red;
+}
+
+.blue
+{
+    color: blue;
+}
+
+.txtGras
+{
+    font-weight: bold;
+}
+
+.txt150
+{
+    
+    font-size: 150%;
+}
