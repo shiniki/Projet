@@ -18,14 +18,14 @@
 
 
                 <div class="row">
-                    <div class="col-sm-2"><label for="id_race_animaux">id race animaux</label></div>
+                    <div class="col-sm-2"><label for="race_animaux">race de l animal</label></div>
                     <div class="col-sm-1">
-                        <?php if (isset($_SESSION['form']['id_race_animaux'])) { ?>
-                            <input type="text" name="id_race_animaux" id="id_race_animaux" value="<?php print $_SESSION['form']['id_race_animaux']; ?>"/>
+                        <?php if (isset($_SESSION['form']['race_animaux'])) { ?>
+                            <input type="text"  name="race_animaux" id="race_animaux" value="<?php print $_SESSION['form']['id_race_animaux']; ?>"/>
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="id_race_animaux" id="id_race_animaux" placeholder="id_race_animaux" required/>
+                            <input type="text"  name="race_animaux" id="race_animaux" placeholder="race de l animal" required/>
                             <?php
                         }
                         ?>
@@ -39,7 +39,7 @@
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="nom_animaux" id="nom_animaux" placeholder="nom_animaux" required/>
+                            <input type="text" name="nom_animaux" pattern="[A-Za-z]{1,25}" title="Que des lettres" id="nom_animaux" placeholder="nom_animaux" required/>
                             <?php
                         }
                         ?>
@@ -86,7 +86,7 @@
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="sexe_animaux" id="sexe_animaux" placeholder="sexe_animaux" required/>
+                            <input type="text" name="sexe_animaux" pattern="[MF]" title="M ou F" id="sexe_animaux" placeholder="sexe_animaux" required/>
                             <?php
                         }
                         ?>
@@ -132,9 +132,19 @@ if (isset($_GET['Envoyer'])) {
 
     $_db = $cnx;
 
-    if ($_GET['id_race_animaux'] != "" && $_GET['nom_animaux'] != "" && $_GET['image'] != "" && $_GET['prix_unitaire'] != "" && $_GET['sexe_animaux'] != "" && $_GET['age_animaux'] != "") {// Vérif case vide
+    if ($_GET['race_animaux'] != "" && $_GET['nom_animaux'] != "" && $_GET['image'] != "" && $_GET['prix_unitaire'] != "" && $_GET['sexe_animaux'] != "" && $_GET['age_animaux'] != "") {// Vérif case vide
+        $query="select id_gt_race_animaux from gt_race_animaux where race_animaux = :race_animaux";
+        $resultset = $_db->prepare($query);
+        $resultset->bindValue(':race_animaux', $_GET['race_animaux']);
+        $resultset->execute();
+        $data = $resultset->fetch();
+        $_SESSION['race_animaux'] = $data['id_gt_race_animaux'];
+        
+        
+        
+        
         $query = "insert into gt_animaux(id_gt_race_animaux,nom_animaux,image,prix_unitaire,sexe_animaux,age_animaux) 
-            values('" . $_GET['id_race_animaux'] . "','" . $_GET['nom_animaux'] . "','" . $_GET['image'] . "','" . $_GET['prix_unitaire'] . "','" . $_GET['sexe_animaux'] . "','" . $_GET['age_animaux'] . "')";
+            values('" . $_SESSION['race_animaux'] . "','" . $_GET['nom_animaux'] . "','" . $_GET['image'] . "','" . $_GET['prix_unitaire'] . "','" . $_GET['sexe_animaux'] . "','" . $_GET['age_animaux'] . "')";
         $resultset = $_db->prepare($query);
         $resultset->execute();
         $data = $resultset->fetchAll();

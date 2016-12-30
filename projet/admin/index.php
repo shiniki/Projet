@@ -61,7 +61,7 @@ session_start();
                 </div>
             </div>
             <footer>
-                webmaster@berlioz-delices.be
+                
             </footer>
         </div>
     </body>

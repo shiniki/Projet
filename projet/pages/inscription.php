@@ -14,29 +14,6 @@ if (isset($_GET['submit_compte'])) {
         if (isset($_SESSION['form'])) {
             unset($_SESSION['form']);
         }
-    } else {
-        $texte = "Complétez tous les champs.";
-        if (trim($pseudo_cc) != '') {
-            $_SESSION['form']['pseudo'] = $pseudo;
-        }
-        if (trim($mdp_cc) != '') {
-            $_SESSION['form']['mdp'] = $mdp;
-        }
-        if (trim($nom_cc) != '') {
-            $_SESSION['form']['nom'] = $nom;
-        }
-        if (trim($pren_cc) != '') {
-            $_SESSION['form']['prenom'] = $prenom;
-        }
-        if (trim($adresse_cc) != '') {
-            $_SESSION['form']['adresse'] = $adresse;
-        }
-        if (trim($ville_cc) != '') {
-            $_SESSION['form']['ville'] = $ville;
-        }
-        if (trim($pays_cc) != '') {
-            $_SESSION['form']['pays'] = $pays;
-        }
     }
 }
 ?>
@@ -50,7 +27,7 @@ if (isset($_GET['submit_compte'])) {
             ?>
         </div>
     </div>
-    <form action="<?php print $_SERVER['PHP_SELF']; ?>" method="get" id="Envoyer">
+    <form action="<?php print $_SERVER['PHP_SELF']; ?>" method="get" id="form_Envoyer">
 
         <div id="contenu2">
 
@@ -77,11 +54,11 @@ if (isset($_GET['submit_compte'])) {
                     <div class="col-sm-2"><label for="mdp">Mot de passe</label></div>
                     <div class="col-sm-4">
                         <?php if (isset($_SESSION['form']['mdp'])) { ?>
-                            <input type="text" name="mdp" id="mdp" value="<?php print $_SESSION['form']['mdp']; ?>"/>
+                            <input type="password" name="mdp" id="mdp" value="<?php print $_SESSION['form']['mdp']; ?>"/>
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="mdp" id="mdp" placeholder="Mot de passe" required/>
+                            <input type="password" name="mdp" pattern=".{3,}" title="mdp trop petit" id="mdp" placeholder="Mot de passe" required/>
                             <?php
                         }
                         ?>
@@ -92,11 +69,11 @@ if (isset($_GET['submit_compte'])) {
                     <div class="col-sm-2"><label for="nom">Nom</label></div>
                     <div class="col-sm-4">
                         <?php if (isset($_SESSION['form']['nom'])) { ?>
-                            <input type="text" name="nom" id="nom" value="<?php print $_SESSION['form']['nom']; ?>"/>
+                            <input type="text"  name="nom" id="nom" value="<?php print $_SESSION['form']['nom']; ?>"/>
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="nom" id="nom" placeholder="Nom" required/>
+                            <input type="text"  name="nom" pattern="[A-Za-z]{1,}" title="Que des lettres" id="nom" placeholder="Nom" required/>
                             <?php
                         }
                         ?>
@@ -111,7 +88,7 @@ if (isset($_GET['submit_compte'])) {
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="prenom" id="prenom" placeholder="Prenom" required/>
+                            <input type="text" name="prenom" pattern="[A-Za-z]{1,}" title="Que des lettres" id="prenom" placeholder="Prenom" required/>
                             <?php
                         }
                         ?></div></div>
@@ -121,7 +98,7 @@ if (isset($_GET['submit_compte'])) {
                     <div class="col-sm-2"><label for="nom">Adresse</label></div>
                     <div class="col-sm-4">
                         <?php if (isset($_SESSION['form']['adresse'])) { ?>
-                            <input type="text" name="adresse" id="adresse_cc" value="<?php print $_SESSION['form']['adresse']; ?>"/>
+                            <input type="text" name="adresse" id="adresse" value="<?php print $_SESSION['form']['adresse']; ?>"/>
                             <?php
                         } else {
                             ?>
@@ -134,11 +111,11 @@ if (isset($_GET['submit_compte'])) {
                     <div class="col-sm-2"><label for="nom">Ville</label></div>
                     <div class="col-sm-4">
                         <?php if (isset($_SESSION['form']['ville'])) { ?>
-                            <input type="text" name="ville" id="ville_cc" value="<?php print $_SESSION['form']['ville']; ?>"/>
+                            <input type="text" name="ville" id="ville" value="<?php print $_SESSION['form']['ville']; ?>"/>
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="ville" id="ville" placeholder="Ville" required/>
+                            <input type="text" name="ville" id="ville" pattern="[A-Za-z]{1,}" title="Que des lettres" placeholder="Ville" required/>
                             <?php
                         }
                         ?></div></div>
@@ -151,7 +128,7 @@ if (isset($_GET['submit_compte'])) {
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="pays" id="pays" placeholder="Pays" required/>
+                            <input type="text" name="pays" pattern="[A-Za-z]{1,}" title="Que des lettres" id="pays" placeholder="Pays" required/>
                             <?php
                         }
                         ?></div></div>
@@ -189,17 +166,7 @@ if (isset($_GET['Envoyer'])) {
 
        
 
-        /* $req=$query('insert into contact(pseudo_contact,mdp_contact,nom_contact,prenom_contact,adresse_contact,ville_contact,pays_contact) VALUES(:pseudo_contact,:mdp_contact,:nom_contact,:prenom_contact,:adresse_contact,:ville_contact,:pays_contact)');
-          $req->execute(array(
-          'pseudo_contact'=>ni,
-          'mdp_contact'=>aa,
-          'nom_contact'=>aa,
-          'prenom_contact'=>aa,
-          'adresse_contact'=>aa,
-          'ville_contact'=>aa,
-          ' pays_contact'=>aa
-
-          )); */
+       
 
         echo "Votre formulaire a bien été envoy&eacute;e.";
     } else {

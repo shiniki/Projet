@@ -35,11 +35,11 @@
                     <div class="col-sm-2"><label for="mdp">Mot de passe</label></div>
                     <div class="col-sm-1">
                         <?php if (isset($_SESSION['form']['mdp'])) { ?>
-                            <input type="text" name="mdp" id="mdp" value="<?php print $_SESSION['form']['mdp']; ?>"/>
+                            <input type="password" name="mdp" id="mdp" value="<?php print $_SESSION['form']['mdp']; ?>"/>
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="mdp" id="mdp" placeholder="Mot de passe" required/>
+                            <input type="password" name="mdp" id="mdp" placeholder="Mot de passe" required/>
                             <?php
                         }
                         ?>

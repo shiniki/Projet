@@ -1,4 +1,4 @@
-<h2 class="txtRouge">Nos produits</h2>
+<h2 class="txtRouge">Nos animaux</h2>
 <?php
 $type = new Race_animauxDB($cnx);
 $liste_t = $type->getRaceAnimaux();
@@ -77,8 +77,8 @@ if (isset($nbrG) && $nbrG > 0) {
                    print"sexe (M/F): ";print $liste_g[$i]['sexe_animaux'] . "<br/><br/>";
                    print"age: "; print $liste_g[$i]['age_animaux'] . " ans<br/><br/>";
                     ?>
-                    <a class="txtBlue" href ="./index.php?id_animaux=<?php print $liste_g[$i]['id_gt_animaux'];?>&page=commande">
-                        Commander
+                    <a class="txtBlue" href ="./index.php?id_animaux=<?php print $liste_g[$i]['id_gt_animaux'];?>&page=delete_animaux">
+                        Delete
                     </a>
                 </div>
             </div>

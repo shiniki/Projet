@@ -36,6 +36,13 @@ vertical-align:middle;
 
 }
 
+
+
+
+:-ms-input-placeholder {  
+   color: gray;  
+}
+
 /*******************************************************************/
 
 .darkblue

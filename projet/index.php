@@ -74,7 +74,7 @@ $id = (isset($_SESSION['id'])) ? (int) $_SESSION['id'] : 0;
                     <div class="col-sm-12">                     
                         <footer>
                             <br>
-                            <br> shiniki92@gmail.com
+                            <br>
                         </footer>
                     </div>
                 </div>
