@@ -1,6 +1,6 @@
 <?php
 
-class InfoClientDB 
+class InfoClientDB extends InfoClient
 {
     private $_db;
     private $_infoArray = array();
@@ -9,8 +9,8 @@ class InfoClientDB
     {
         $this->_db = $cnx;
     }
-    
-   /* public function getInfoClient($page)
+   
+    public function getInfoClient($page)
     {
         try
         {
@@ -29,17 +29,5 @@ class InfoClientDB
         }
        // return $_infoArray;
     }
-}*/
-    public function getInfoClient($id){
-         try {
-            $query = "SELECT * FROM contact where id_contact =:gt_id_contact";
-            $resultset = $this->_db->prepare($query);
-            $resultset->bindValue(1, $id);
-            $resultset->execute();
-            $data = $resultset->fetchAll();
-        } catch (PDOException $e) {
-            print $e->getMessage();
-        }
-
-        return $data;
-}}
+}
+  

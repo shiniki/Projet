@@ -20,31 +20,31 @@ $texte = $info->getInfoClient("accueil");
           <div class="carousel-inner" role="listbox">
             <div class="item active">
              
-              <img src="./images/gt_dia1.jpg" alt="coucou">
+              <img src="./images/liste1.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>
             </div>
             <div class="item">
-              <img src="./images/gt_birthday.jpg" alt="coucou">
+              <img src="./images/liste3.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>
             </div>
             <div class="item">
-              <img src="./images/gt_etalage.jpg" alt="coucou">
+              <img src="./images/liste2.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>
             </div>
             <div class="item">
-              <img src="./images/gt_tasse_cake.jpg" alt="coucou">
+              <img src="./images/liste4.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>
             </div>
             <div class="item">
-              <img src="./images/gt_tea_time.jpg" alt="coucou">
+              <img src="./images/liste5.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>

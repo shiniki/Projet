@@ -5,8 +5,8 @@ $texte = $info->getInfoClient("accueil");
 ?>
 
 
-<div class="row">
-    <div class="col-sm-8">
+<div class="centre" id='liste' >
+    <div class="col-sm-8 ">
         <br>
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
@@ -20,31 +20,31 @@ $texte = $info->getInfoClient("accueil");
           <div class="carousel-inner" role="listbox">
             <div class="item active">
              
-              <img src="./admin/images/gt_dia1.jpg" alt="coucou">
+              <img  src="./admin/images/liste1.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>
             </div>
             <div class="item">
-              <img src="./admin/images/gt_birthday.jpg" alt="coucou">
+              <img src="./admin/images/liste3.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>
             </div>
             <div class="item">
-              <img src="./admin/images/gt_etalage.jpg" alt="coucou">
+              <img src="./admin/images/liste2.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>
             </div>
             <div class="item">
-              <img src="./admin/images/gt_tasse_cake.jpg" alt="coucou">
+              <img src="./admin/images/liste4.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>
             </div>
             <div class="item">
-              <img src="./admin/images/gt_tea_time.jpg" alt="coucou">
+              <img src="./admin/images/liste5.jpg" alt="coucou">
               <div class="carousel-caption">
                 ...
               </div>

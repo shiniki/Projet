@@ -1,18 +1,17 @@
 
 <?php
-$animaux = new Vue_animauxDB($cnx);
-$pet = $animaux->getVue_gateauById($_GET['id_animaux']);
+$animaux = new Vue_accessoiresDB($cnx);
+$pet = $animaux->getVue_gateauById($_GET['id_accessoires']);
 $Cpseudo = $_SESSION['pseudo'];
-$Nnom = $pet[0]['nom_animaux'];
-$Nprix = $pet[0]['prix_unitaire'];
-$Nsexe = $pet[0]['sexe_animaux'];
-$Nage = $pet[0]['age_animaux'];
+$Nnomacc = $pet[0]['nom_accessoires'];
+$Nprixacc = $pet[0]['prix_unitaire'];
+
 
 
 $_db = $cnx;
 
-$query = "insert into commande(pseudo_commande,nom_animaux,prix_unitaire,sexe_animaux,age_animaux) 
-            values('" . $Cpseudo . "','" . $Nnom . "','" . $Nprix . "','" . $Nsexe . "','" . $Nage . "')";
+$query = "insert into commandeacc(pseudo_commande,nom_accessoires,prix_unitaire) 
+            values('" . $Cpseudo . "','" . $Nnomacc . "','" . $Nprixacc. "')";
 $resultset = $_db->prepare($query);
 $resultset->execute();
 $data = $resultset->fetchAll();

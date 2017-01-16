@@ -24,7 +24,7 @@
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="mail" id="mail" placeholder="mail" required/>
+                            <input type="text" name="mail" id="mail" pattern="[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,64}" title="Merci d'utiliser ce format xxx@xxx.xxx" placeholder="xxxx@xxx.xxx" required/>
                             <?php
                         }
                         ?>
@@ -38,7 +38,8 @@
                             <?php
                         } else {
                             ?>
-                            <input type="text" name="texte" id="texte"   size="50" style="height:150px; "   placeholder="" required/>
+                            <textarea  name="texte" id="texte" cols="40" rows="5"></textarea>
+                           
                             <?php
                         }
                         ?>
