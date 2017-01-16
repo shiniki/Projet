@@ -5,6 +5,9 @@ $cnx = Connexion::getInstance($dsn, $user, $pass);
 /* Index de la partie admin */
 session_start();
 ?>
+<?php
+$id = (isset($_SESSION['id'])) ? (int) $_SESSION['id'] : 0;
+?>
 <html>
 
     <head>
@@ -28,40 +31,44 @@ session_start();
                 <div class="col-md-12">
                     <nav>
                         <?php
-                        if (!isset($_SESSION['admin'])) {
-                            if (file_exists('./lib/php/adminMenu.php')) {
-                                include('./lib/php/adminMenu.php');
+                        if ($id != 0) {
+                            if (!isset($_SESSION['admin'])) {
+                                if (file_exists('./lib/php/adminMenu.php')) {
+                                    include('./lib/php/adminMenu.php');
+                                    
+                                }
+                                
                             }
                         }
-                        ?>
-                    </nav>
-                </div>
-                <div class="col-sm-10">
-                    <div class="row">
-                        <div class="col-sm-12"> 
-                            <!--<h2 class="red">Bienvenue chez Berlioz Délices</h2>-->
-                        </div>
+                          else{
+                          header("Location: http://localhost/projet/index.php?page=accueil");
+                              
+                          }
+                            ?>
+                        </nav>
                     </div>
+                    <div class="col-sm-10">
+                        <div class="row">
+                            <div class="col-sm-12"> 
+                               
+                            </div>
+                        </div>
 
-                    <!--
-                    1) 
-                    2) Accueil :
-                    -->
-                    <?php
-                    if (!isset($_SESSION['page'])) {
-                        $_SESSION['page'] = "accueil";
-                    }
-                    if (isset($_GET['page'])) {
-                        $_SESSION['page'] = $_GET['page'];
-                    }
-                    if (file_exists('./pages/' . $_SESSION['page'] . '.php')) {
-                        include ('./pages/' . $_SESSION['page'] . '.php');
-                    }
-                    ?>
+                        <?php
+                        if (!isset($_SESSION['page'])) {
+                            $_SESSION['page'] = "accueil";
+                        }
+                        if (isset($_GET['page'])) {
+                            $_SESSION['page'] = $_GET['page'];
+                        }
+                        if (file_exists('./pages/' . $_SESSION['page'] . '.php')) {
+                            include ('./pages/' . $_SESSION['page'] . '.php');
+                        }
+                        ?>
                 </div>
             </div>
             <footer>
-                
+
             </footer>
         </div>
     </body>

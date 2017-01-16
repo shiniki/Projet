@@ -158,6 +158,20 @@ if (isset($_GET['Envoyer'])) {
     $_db = $cnx;
 
     if ($_GET['pseudo'] != "" && $_GET['mdp'] != "" && $_GET['nom'] != "" && $_GET['prenom'] != "" && $_GET['adresse'] != "" && $_GET['ville'] != "" && $_GET['pays'] != "") {// Vérif case vide
+        $query=('select count(*) as nbr from contact where pseudo_contact=:pseudo');
+        $resultset = $_db->prepare($query);
+        $resultset->bindValue(':pseudo', $_GET['pseudo']);
+        $resultset->execute();
+        
+        $pseudo_free=($resultset->fetchColumn()==0)?1:0;
+                      
+        $resultset->CloseCursor();
+        if(!$pseudo_free){
+           
+            echo "<p style='text-align: center'>Pseudo déjà utilisé</p>";
+
+        }
+        else{
         $query = "insert into contact(pseudo_contact,mdp_contact,nom_contact,prenom_contact,adresse_contact,ville_contact,pays_contact) 
             values('" . $_GET['pseudo'] . "','" . $_GET['mdp'] . "','" . $_GET['nom'] . "','" . $_GET['prenom'] . "','" . $_GET['adresse'] . "','" . $_GET['ville'] . "','" . $_GET['pays'] . "')";
         $resultset = $_db->prepare($query);
@@ -167,10 +181,11 @@ if (isset($_GET['Envoyer'])) {
        
 
        
-
-        echo "Votre formulaire a bien été envoy&eacute;e.";
+ echo "<p style='text-align: center'>Votre formulaire a bien été envoy&eacute;e.</p>";
+        }
     } else {
-        echo "votre formulaire est incomplet";
+        echo "<p style='text-align: center'>votre formulaire est incomplet</p>";
+      
     }
 }
 echo".";

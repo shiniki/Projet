@@ -46,14 +46,10 @@ $id = (isset($_SESSION['id'])) ? (int) $_SESSION['id'] : 0;
                 <div class="col-sm-10">
                     <div class="row">
                         <div class="col-sm-12"> 
-                            <!--<h2 class="red">Bienvenue chez Berlioz Délices</h2>-->
+                            
                         </div>
                     </div>
 
-                    <!--
-                    1) 
-                    2) Accueil :
-                    -->
                     <section id="main">
                         <?php
                     if (!isset($_SESSION['page'])) {

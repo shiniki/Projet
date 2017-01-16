@@ -63,7 +63,9 @@ if (isset($nbrG) && $nbrG > 0) {
                     print"prix: ";print $liste_g[$i]['prix_unitaire'] . " &euro;<br/><br/>";
               
                     ?>
-                    
+                    <a class="txtBlue" href ="./index.php?id_accessoires=<?php print $liste_g[$i]['id_gt_accessoires'];?>&page=commander_accessoires">
+                        commander
+                    </a>
                 </div>
             </div>
             <?php

@@ -5,12 +5,12 @@ class InfoClientDB
     private $_db;
     private $_infoArray = array();
     
-    public function __construct($db)
+    public function __construct($cnx)
     {
-        $this->_db = $db;
+        $this->_db = $cnx;
     }
     
-    public function getInfoClient($page)
+   /* public function getInfoClient($page)
     {
         try
         {
@@ -29,4 +29,17 @@ class InfoClientDB
         }
        // return $_infoArray;
     }
-}
+}*/
+    public function getInfoClient($id){
+         try {
+            $query = "SELECT * FROM contact where id_contact =:gt_id_contact";
+            $resultset = $this->_db->prepare($query);
+            $resultset->bindValue(1, $id);
+            $resultset->execute();
+            $data = $resultset->fetchAll();
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+
+        return $data;
+}}
