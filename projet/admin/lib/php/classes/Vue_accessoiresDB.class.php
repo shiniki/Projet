@@ -45,4 +45,21 @@ class Vue_accessoiresDB {
 
         return $data;
     }
+     public function getListeTousAccessoires() 
+    {
+        try 
+        {
+            $query = "SELECT * FROM vue_accessoires";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+            $data = $resultset->fetchAll();
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+
+        return $data;
+    }
+    
+    
+    
 }

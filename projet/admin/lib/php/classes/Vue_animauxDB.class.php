@@ -35,6 +35,19 @@ class Vue_animauxDB {
 
         return $data;
     }
-    
+    public function getListeTousAnimaux() 
+    {
+        try 
+        {
+            $query = "SELECT * FROM vue_animaux";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+            $data = $resultset->fetchAll();
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+
+        return $data;
+    }
 
 }
