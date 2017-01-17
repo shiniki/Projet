@@ -163,7 +163,7 @@ if (isset($_GET['Envoyer'])) {
 
           )); */
 
-        echo "Votre formulaire a bien été envoy&eacute;e.";
+        echo "<p style='text-align: center'>ajout de l'animal ok</p>";
     } else {
         echo "votre formulaire est incomplet";
     }

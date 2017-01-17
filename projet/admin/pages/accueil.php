@@ -6,7 +6,7 @@ $texte = $info->getInfoClient("accueil");
 
 
 <div class="row">
-    <div class="col-sm-8">
+    <div class="col-md-8 col-md-offset-3">
         <br>
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
           <!-- Indicators -->
