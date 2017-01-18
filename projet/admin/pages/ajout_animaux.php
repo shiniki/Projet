@@ -131,8 +131,9 @@ extract($_GET);
 if (isset($_GET['Envoyer'])) {
 
     $_db = $cnx;
-
+try{
     if ($_GET['race_animaux'] != "" && $_GET['nom_animaux'] != "" && $_GET['image'] != "" && $_GET['prix_unitaire'] != "" && $_GET['sexe_animaux'] != "" && $_GET['age_animaux'] != "") {// Vérif case vide
+        
         $query="select id_gt_race_animaux from gt_race_animaux where race_animaux = :race_animaux";
         $resultset = $_db->prepare($query);
         $resultset->bindValue(':race_animaux', $_GET['race_animaux']);
@@ -166,8 +167,11 @@ if (isset($_GET['Envoyer'])) {
         echo "<p style='text-align: center'>ajout de l'animal ok</p>";
     } else {
         echo "votre formulaire est incomplet";
+    }}catch(PDOException $e) {
+         print "Merci d entrer une race_animal valide";
     }
 }
 echo".";
 ?>
         
+ 

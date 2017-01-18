@@ -45,8 +45,8 @@
                         ?>
                     </div>
                 </div>
-                
-                 <div class="row">
+
+                <div class="row">
                     <div class="col-sm-2"><label for="image">image</label></div>
                     <div class="col-sm-1">
                         <?php if (isset($_SESSION['form']['image'])) { ?>
@@ -60,10 +60,10 @@
                         ?>
                     </div>
                 </div>
-                
-                
-                
-                 <div class="row">
+
+
+
+                <div class="row">
                     <div class="col-sm-2"><label for="prix_unitaire">prix_unitaire</label></div>
                     <div class="col-sm-1">
                         <?php if (isset($_SESSION['form']['prix_unitaire'])) { ?>
@@ -77,9 +77,9 @@
                         ?>
                     </div>
                 </div>
-                
-                 
-                
+
+
+
 
 
 
@@ -87,7 +87,7 @@
                 <div class="row"><br><br>
                     <div class="col-sm-2"><div class="col-sm-4"> &nbsp;&nbsp;&nbsp;
                             <input type="submit" name="Envoyer" id="Envoyer" value="ajouter" /></div></div>
-                   
+
 
                 </div>
 
@@ -101,41 +101,44 @@ extract($_GET);
 if (isset($_GET['Envoyer'])) {
 
     $_db = $cnx;
+    try {
+        if ($_GET['race_animaux'] != "" && $_GET['nom_accessoires'] != "" && $_GET['image'] != "" && $_GET['prix_unitaire'] != "") {// Vérif case vide
+            $query = "select id_gt_race_animaux from gt_race_animaux where race_animaux = :race_animaux";
+            $resultset = $_db->prepare($query);
+            $resultset->bindValue(':race_animaux', $_GET['race_animaux']);
+            $resultset->execute();
+            $data = $resultset->fetch();
+            $_SESSION['race_animaux'] = $data['id_gt_race_animaux'];
 
-    if ($_GET['race_animaux'] != "" && $_GET['nom_accessoires'] != "" && $_GET['image'] != "" && $_GET['prix_unitaire'] != "" ) {// Vérif case vide
-        $query="select id_gt_race_animaux from gt_race_animaux where race_animaux = :race_animaux";
-        $resultset = $_db->prepare($query);
-        $resultset->bindValue(':race_animaux', $_GET['race_animaux']);
-        $resultset->execute();
-        $data = $resultset->fetch();
-        $_SESSION['race_animaux'] = $data['id_gt_race_animaux'];
-        
-        
-        
-        
-        $query = "insert into gt_accessoires(id_gt_race_animaux,nom_accessoires,image,prix_unitaire) 
+
+
+
+            $query = "insert into gt_accessoires(id_gt_race_animaux,nom_accessoires,image,prix_unitaire) 
             values('" . $_SESSION['race_animaux'] . "','" . $_GET['nom_accessoires'] . "','" . $_GET['image'] . "','" . $_GET['prix_unitaire'] . "')";
-        $resultset = $_db->prepare($query);
-        $resultset->execute();
-        $data = $resultset->fetchAll();
+            $resultset = $_db->prepare($query);
+            $resultset->execute();
+            $data = $resultset->fetchAll();
 
-       
 
-        /* $req=$query('insert into contact(pseudo_contact,mdp_contact,nom_contact,prenom_contact,adresse_contact,ville_contact,pays_contact) VALUES(:pseudo_contact,:mdp_contact,:nom_contact,:prenom_contact,:adresse_contact,:ville_contact,:pays_contact)');
-          $req->execute(array(
-          'pseudo_contact'=>ni,
-          'mdp_contact'=>aa,
-          'nom_contact'=>aa,
-          'prenom_contact'=>aa,
-          'adresse_contact'=>aa,
-          'ville_contact'=>aa,
-          ' pays_contact'=>aa
 
-          )); */
+            /* $req=$query('insert into contact(pseudo_contact,mdp_contact,nom_contact,prenom_contact,adresse_contact,ville_contact,pays_contact) VALUES(:pseudo_contact,:mdp_contact,:nom_contact,:prenom_contact,:adresse_contact,:ville_contact,:pays_contact)');
+              $req->execute(array(
+              'pseudo_contact'=>ni,
+              'mdp_contact'=>aa,
+              'nom_contact'=>aa,
+              'prenom_contact'=>aa,
+              'adresse_contact'=>aa,
+              'ville_contact'=>aa,
+              ' pays_contact'=>aa
 
-        echo "<p style='text-align: center'>ajout accessoire ok</p>";
-    } else {
-        echo "votre formulaire est incomplet";
+              )); */
+
+            echo "<p style='text-align: center'>ajout accessoire ok</p>";
+        } else {
+            echo "votre formulaire est incomplet";
+        }
+    } catch (PDOException $e) {
+        print "Merci d entrer une race_animal valide";
     }
 }
 echo".";
